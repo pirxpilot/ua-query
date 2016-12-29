@@ -1,0 +1,31 @@
+{
+  "name": "ua-query",
+  "version": "0.0.0",
+  "description": "Lazy user agent string checker for connect compatible requests",
+  "author": {
+    "name": "Damian Krzeminski",
+    "email": "pirxpilot@code42day.com",
+    "url": "https://code42day.com"
+  },
+  "repository": "code42day/ua-query",
+  "license": "MIT",
+  "keywords": [
+    "ua-query",
+    "user-agent",
+    "request",
+    "connect"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "^2.9.4",
+    "mocha": "^3.2.0",
+    "should": "^11.1.2"
+  },
+  "scripts": {
+    "test": "make check"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ]
+}
