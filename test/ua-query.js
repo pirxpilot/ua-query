@@ -143,6 +143,30 @@ describe('ua query', function () {
     ).not.be.ok();
   });
 
+  it('should detect IE <= 10', function() {
+    should(
+      ua.isIE(r('windows-ie-9'))
+    ).be.ok();
+    should(
+      ua.isIE(r('windows-ie-10'), 10)
+    ).be.ok();
+    should(
+      ua.isIE(r('windows-ie-10'), 11)
+    ).be.not.ok();
+  });
+
+  it('should detect IE 11', function() {
+    should(
+      ua.isIE(r('windows-ie-11'))
+    ).be.ok();
+    should(
+      ua.isIE(r('windows-ie-11'), 10)
+    ).be.ok();
+    should(
+      ua.isIE(r('windows-ie-11'), 11)
+    ).be.ok();
+  });
+
   it('should check for old browser version', function() {
     var req = r('windows-xp-chrome-35');
 
