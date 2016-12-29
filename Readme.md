@@ -15,10 +15,34 @@ $ npm install --save ua-query
 ## Usage
 
 ```js
-var uaQuery = require('ua-query');
+var ua = require('ua-query');
 
-uaQuery('Rainbow');
+function middleware(req, res, next) {
+  if (ua.isChrome(req, 45) || ua.isFirefox(req, 40)) {
+    res.locals.polyfills = false;
+  }
+}
 ```
+
+## API
+
+`ua-query` functions take request as the first parameter and optionally version number as the second.
+
+browsers:
+-  `isChrome`
+-  `isFirefox`
+-  `isSafari`
+-  `isIE`
+
+-  `isBot` - some not all strange bots
+
+-  `isOld(browser, version)` - true if broswer is older than specified version
+
+OS:
+-  `isWindowsXP`
+
+
+
 
 ## License
 
