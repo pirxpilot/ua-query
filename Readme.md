@@ -29,20 +29,18 @@ function middleware(req, res, next) {
 `ua-query` functions take request as the first parameter and optionally version number as the second.
 
 browsers:
--  `isChrome`
--  `isFirefox`
--  `isSafari`
--  `isIE`
+- `isChrome(req[, version])`
+- `isFirefox(req[, version])`
+- `isSafari(req[, version])`
+- `isIE(req[, version])`
+- `isEdge(req[, version])`
+- `isBot(req[, version])` - a few strange bots
 
--  `isBot` - some not all strange bots
 
--  `isOld(browser, version)` - true if broswer is older than specified version
+- `isOld(browser, version)` - true if browser type matches but the version is older than specified version
 
 OS:
--  `isWindowsXP`
-
-
-
+- `isWindowsXP(req)`
 
 ## License
 

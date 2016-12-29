@@ -167,6 +167,18 @@ describe('ua query', function () {
     ).be.ok();
   });
 
+  it('should detect Edge', function() {
+    should(
+      ua.isEdge(r('windows-edge-12'))
+    ).be.ok();
+    should(
+      ua.isEdge(r('windows-edge-12'), 12)
+    ).be.ok();
+    should(
+      ua.isEdge(r('windows-ie-11'))
+    ).be.not.ok();
+  });
+
   it('should check for old browser version', function() {
     var req = r('windows-xp-chrome-35');
 
