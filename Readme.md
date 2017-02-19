@@ -44,13 +44,13 @@ OS:
 
 ## License
 
-MIT © [Damian Krzeminski](https://code42day.com)
+MIT © [Damian Krzeminski](https://pirxpilot.me)
 
 [npm-image]: https://img.shields.io/npm/v/ua-query.svg
 [npm-url]: https://npmjs.org/package/ua-query
 
-[travis-url]: https://travis-ci.org/code42day/ua-query
-[travis-image]: https://img.shields.io/travis/code42day/ua-query.svg
+[travis-url]: https://travis-ci.org/pirxpilot/ua-query
+[travis-image]: https://img.shields.io/travis/pirxpilot/ua-query.svg
 
-[gemnasium-image]: https://img.shields.io/gemnasium/code42day/ua-query.svg
-[gemnasium-url]: https://gemnasium.com/code42day/ua-query
+[gemnasium-image]: https://img.shields.io/gemnasium/pirxpilot/ua-query.svg
+[gemnasium-url]: https://gemnasium.com/pirxpilot/ua-query
