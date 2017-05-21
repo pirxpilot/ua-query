@@ -42,6 +42,21 @@ browsers:
 OS:
 - `isWindowsXP(req)`
 
+
+## In-browser usage
+
+When used in the browser `ua-query` will check self.navigator.userAgent. Browser-side API is similar to
+server-side API but it skips `req` parameter.
+
+```js
+var ua = require('ua-query');
+
+function isModern(req, res, next) {
+  return ua.isChrome(45) || ua.isFirefox(40);
+}
+```
+
+
 ## License
 
 MIT © [Damian Krzeminski](https://pirxpilot.me)
