@@ -1,4 +1,9 @@
 
+1.0.2 / 2017-05-20
+==================
+
+ * stop treating Chrome iOS as a Chrome compatible browser
+
 1.0.1 / 2017-02-19
 ==================
 
