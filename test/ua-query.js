@@ -89,6 +89,9 @@ describe('ua query', function () {
       ua.isSafari(r('safari-7', 7))
     ).be.ok();
     should(
+      ua.isSafari(r('mobile-safari-10'), 10)
+    ).be.ok();
+    should(
       ua.isOld(r('safari-7'), 'safari', 8)
     ).be.ok();
   });
@@ -105,6 +108,9 @@ describe('ua query', function () {
     ).not.be.ok();
     should(
       ua.isSafari(r('windows-edge-12'))
+    ).not.be.ok();
+    should(
+      ua.isSafari(r('standalone-ios'))
     ).not.be.ok();
   });
 

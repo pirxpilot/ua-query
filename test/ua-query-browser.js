@@ -110,6 +110,11 @@ describe('ua query browser', function () {
     should(
       ua.isOld('safari', 8)
     ).be.ok();
+
+    set('mobile-safari-10');
+    should(
+      ua.isSafari(10)
+    ).be.ok();
   });
 
   it('should not detect Safari if other browsers', function() {
@@ -126,6 +131,10 @@ describe('ua query browser', function () {
       ua.isSafari()
     ).not.be.ok();
     set('windows-edge-12');
+    should(
+      ua.isSafari()
+    ).not.be.ok();
+    set('standalone-ios');
     should(
       ua.isSafari()
     ).not.be.ok();
@@ -197,6 +206,27 @@ describe('ua query browser', function () {
     should(
       ua.isEdge()
     ).be.not.ok();
+  });
+
+  it('should detect standalone iOS', function() {
+    set('standalone-ios');
+    should(
+      ua.isStandalone_iOS(10)
+    ).be.ok();
+
+    should(
+      ua.isStandalone_iOS(11)
+    ).not.be.ok();
+
+    set('mobile-safari-10');
+    should(
+      ua.isStandalone_iOS()
+    ).not.be.ok();
+
+    set('chrome ios');
+    should(
+      ua.isStandalone_iOS()
+    ).not.be.ok();
   });
 
   it('should check for old browser version', function() {
