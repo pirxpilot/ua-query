@@ -1,4 +1,10 @@
 
+1.2.0 / 2017-06-03
+==================
+
+ * add standalone webview detection on iOS
+ * keep test UA examples in ua-strings module
+
 1.1.0 / 2017-05-20
 ==================
 
