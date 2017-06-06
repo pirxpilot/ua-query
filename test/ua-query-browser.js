@@ -218,6 +218,11 @@ describe('ua query browser', function () {
       ua.isStandalone_iOS(11)
     ).not.be.ok();
 
+    set('standalone-ios-10.1');
+    should(
+      ua.isStandalone_iOS(10)
+    ).be.ok();
+
     set('mobile-safari-10');
     should(
       ua.isStandalone_iOS()
