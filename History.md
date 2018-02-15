@@ -1,4 +1,9 @@
 
+1.3.0 / 2018-02-14
+==================
+
+ * add detection of Android, iOS, and Windows Phone
+
 1.2.1 / 2017-06-05
 ==================
 
