@@ -204,4 +204,52 @@ describe('ua query', function () {
     ).not.be.ok();
   });
 
+  it('should detect android', function() {
+    should(
+      ua.isAndroid(r('android-firefox'))
+    ).be.ok();
+    should(
+      ua.isAndroid(r('android-chrome'))
+    ).be.ok();
+  });
+
+  it('should not detect android if other OSes', function() {
+    should(
+      ua.isAndroid(r('mobile-safari-10'))
+    ).not.be.ok();
+    should(
+      ua.isAndroid(r('windows-ie-11'))
+    ).not.be.ok();
+  });
+
+  it('should detect iOS', function() {
+    should(
+      ua.is_iOS(r('mobile-safari-10'))
+    ).be.ok();
+    should(
+      ua.is_iOS(r('standalone-ios'))
+    ).be.ok();
+  });
+
+  it('should not detect iOS if other OSes', function() {
+    should(
+      ua.is_iOS(r('android-chrome'))
+    ).not.be.ok();
+    should(
+      ua.is_iOS(r('edge-mobile'))
+    ).not.be.ok();
+  });
+
+  it('should detect Windows Phone', function() {
+    should(
+      ua.isWindowsPhone(r('edge-mobile'))
+    ).be.ok();
+  });
+
+  it('should not detect Windows Phone if other OSes', function() {
+    should(
+      ua.isWindowsPhone(r('windows-edge-12'))
+    ).not.be.ok();
+  });
+
 });
