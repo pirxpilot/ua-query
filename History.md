@@ -1,4 +1,9 @@
 
+1.3.1 / 2020-03-12
+==================
+
+ * fix detection of the new Chromium based Edge browser
+
 1.3.0 / 2018-02-14
 ==================
 
