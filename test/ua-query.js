@@ -49,6 +49,10 @@ describe('ua query', function () {
     ).not.be.ok();
 
     should(
+      ua.isChrome(r('windows-edge-79'))
+    ).not.be.ok();
+
+    should(
       ua.isChrome(r('safari-7'))
     ).not.be.ok();
 
@@ -108,6 +112,9 @@ describe('ua query', function () {
     ).not.be.ok();
     should(
       ua.isSafari(r('windows-edge-12'))
+    ).not.be.ok();
+    should(
+      ua.isSafari(r('windows-edge-79'))
     ).not.be.ok();
     should(
       ua.isSafari(r('standalone-ios'))
@@ -177,6 +184,12 @@ describe('ua query', function () {
     ).be.ok();
     should(
       ua.isEdge(r('windows-edge-12'), 12)
+    ).be.ok();
+    should(
+      ua.isEdge(r('windows-edge-79'))
+    ).be.ok();
+    should(
+      ua.isEdge(r('windows-edge-79'), 79)
     ).be.ok();
     should(
       ua.isEdge(r('windows-ie-11'))
@@ -249,6 +262,9 @@ describe('ua query', function () {
   it('should not detect Windows Phone if other OSes', function() {
     should(
       ua.isWindowsPhone(r('windows-edge-12'))
+    ).not.be.ok();
+    should(
+      ua.isWindowsPhone(r('windows-edge-79'))
     ).not.be.ok();
   });
 
