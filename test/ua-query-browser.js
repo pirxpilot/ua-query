@@ -59,6 +59,11 @@ describe('ua query browser', function () {
       ua.isChrome()
     ).not.be.ok();
 
+    set('windows-edge-79');
+    should(
+      ua.isChrome()
+    ).not.be.ok();
+
     set('safari-7');
     should(
       ua.isChrome()
@@ -134,6 +139,10 @@ describe('ua query browser', function () {
     should(
       ua.isSafari()
     ).not.be.ok();
+    set('windows-edge-79');
+    should(
+      ua.isSafari()
+    ).not.be.ok();
     set('standalone-ios');
     should(
       ua.isSafari()
@@ -201,6 +210,13 @@ describe('ua query browser', function () {
     ).be.ok();
     should(
       ua.isEdge(12)
+    ).be.ok();
+    set('windows-edge-79');
+    should(
+      ua.isEdge()
+    ).be.ok();
+    should(
+      ua.isEdge(79)
     ).be.ok();
     set('windows-ie-11');
     should(
