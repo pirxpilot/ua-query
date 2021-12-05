@@ -144,6 +144,12 @@ describe('ua query', function () {
     should(
       ua.isChrome(r('chromium'), 38)
     ).be.ok();
+    should(
+      ua.isChrome(r('chrome-100'), 100)
+    ).be.ok();
+    should(
+      ua.isChrome(r('android-chrome-reduced'), 93)
+    ).be.ok();
   });
 
   it('should not detect Chrome if requested version is above what we have', function() {
@@ -223,6 +229,9 @@ describe('ua query', function () {
     ).be.ok();
     should(
       ua.isAndroid(r('android-chrome'))
+    ).be.ok();
+    should(
+      ua.isAndroid(r('android-chrome-reduced'))
     ).be.ok();
   });
 
