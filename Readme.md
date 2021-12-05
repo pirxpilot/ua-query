@@ -1,6 +1,5 @@
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
-[![Dependency Status][gemnasium-image]][gemnasium-url]
 
 # ua-query
 
@@ -66,6 +65,3 @@ MIT © [Damian Krzeminski](https://pirxpilot.me)
 
 [travis-url]: https://travis-ci.org/pirxpilot/ua-query
 [travis-image]: https://img.shields.io/travis/pirxpilot/ua-query.svg
-
-[gemnasium-image]: https://img.shields.io/gemnasium/pirxpilot/ua-query.svg
-[gemnasium-url]: https://gemnasium.com/pirxpilot/ua-query
