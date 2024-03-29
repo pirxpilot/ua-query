@@ -1,5 +1,5 @@
 [![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][build-image]][build-url]
 
 # ua-query
 
@@ -60,8 +60,8 @@ function isModern(req, res, next) {
 
 MIT © [Damian Krzeminski](https://pirxpilot.me)
 
-[npm-image]: https://img.shields.io/npm/v/ua-query.svg
+[npm-image]: https://img.shields.io/npm/v/ua-query
 [npm-url]: https://npmjs.org/package/ua-query
 
-[travis-url]: https://travis-ci.org/pirxpilot/ua-query
-[travis-image]: https://img.shields.io/travis/pirxpilot/ua-query.svg
+[build-url]: https://github.com/pirxpilot/ua-query/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/ua-query/check.yaml?branch=main
