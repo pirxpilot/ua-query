@@ -1,3 +1,4 @@
+const { describe, it } = require('node:test');
 var should = require('should');
 var ua = require('..');
 var UA = require('./ua-strings.js');
