@@ -1,6 +1,6 @@
 {
   "name": "ua-query",
-  "version": "1.3.2",
+  "version": "2.0.0",
   "description": "Lazy user agent string checker for connect compatible requests",
   "author": {
     "name": "Damian Krzeminski",
