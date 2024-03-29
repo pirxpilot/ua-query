@@ -1,5 +1,5 @@
 const { describe, it } = require('node:test');
-var should = require('should');
+const should = require('should');
 
 global.self = {
   navigator: {
@@ -7,8 +7,8 @@ global.self = {
   }
 };
 
-var ua = require('..');
-var UA = require('./ua-strings.js');
+const ua = require('..');
+const UA = require('./ua-strings.js');
 
 function set(ua) {
   delete global.self.navigator._ua_cache;
@@ -16,14 +16,14 @@ function set(ua) {
 }
 
 describe('ua query browser', function () {
-  it('should not detect Windows XP if user-agent is missing', function() {
+  it('should not detect Windows XP if user-agent is missing', function () {
     set('');
     should(
       ua.isWindowsXP()
     ).not.be.ok();
   });
 
-  it('should not detect Windows XP on Linux or MAC', function() {
+  it('should not detect Windows XP on Linux or MAC', function () {
     set('linux-firefox-41');
     should(
       ua.isWindowsXP()
@@ -35,21 +35,21 @@ describe('ua query browser', function () {
     ).not.be.ok();
   });
 
-  it('should detect Windows XP on Windows XP', function() {
+  it('should detect Windows XP on Windows XP', function () {
     set('windows-xp-chrome-35');
     should(
       ua.isWindowsXP()
     ).be.ok();
   });
 
-  it('should not detect Chrome if user-agent is missing', function() {
+  it('should not detect Chrome if user-agent is missing', function () {
     set();
     should(
       ua.isChrome()
     ).not.be.ok();
   });
 
-  it('should not detect Chrome if other browsers', function() {
+  it('should not detect Chrome if other browsers', function () {
     set('linux-firefox-41');
     should(
       ua.isChrome()
@@ -76,7 +76,7 @@ describe('ua query browser', function () {
     ).not.be.ok();
   });
 
-  it('should detect Chrome', function() {
+  it('should detect Chrome', function () {
     set('windows-xp-chrome-35');
     should(
       ua.isChrome()
@@ -87,21 +87,21 @@ describe('ua query browser', function () {
     ).be.ok();
   });
 
-  it('ua should detect Chrome iOS', function() {
+  it('ua should detect Chrome iOS', function () {
     set('chrome ios');
     should(
       ua.isChrome_iOS()
     ).be.ok();
   });
 
-  it('should detect Firefox', function() {
+  it('should detect Firefox', function () {
     set('linux-firefox-41');
     should(
       ua.isFirefox()
     ).be.ok();
   });
 
-  it('should detect Safari', function() {
+  it('should detect Safari', function () {
     set('safari-7');
 
     should(
@@ -123,7 +123,7 @@ describe('ua query browser', function () {
     ).be.ok();
   });
 
-  it('should not detect Safari if other browsers', function() {
+  it('should not detect Safari if other browsers', function () {
     set('mac-chrome-41');
     should(
       ua.isSafari()
@@ -150,14 +150,14 @@ describe('ua query browser', function () {
     ).not.be.ok();
   });
 
-  it('should not detect Firefox if Chrome', function() {
+  it('should not detect Firefox if Chrome', function () {
     set('windows-xp-chrome-35');
     should(
       ua.isFirefox()
     ).not.be.ok();
   });
 
-  it('should detect Chrome if requested version is the same', function() {
+  it('should detect Chrome if requested version is the same', function () {
     set('windows-xp-chrome-35');
     should(
       ua.isChrome(35)
@@ -168,7 +168,7 @@ describe('ua query browser', function () {
     ).be.ok();
   });
 
-  it('should not detect Chrome if requested version is above what we have', function() {
+  it('should not detect Chrome if requested version is above what we have', function () {
     set(
       'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36'
     );
@@ -177,7 +177,7 @@ describe('ua query browser', function () {
     ).not.be.ok();
   });
 
-  it('should detect IE <= 10', function() {
+  it('should detect IE <= 10', function () {
     set('windows-ie-9');
     should(
       ua.isIE()
@@ -191,7 +191,7 @@ describe('ua query browser', function () {
     ).be.not.ok();
   });
 
-  it('should detect IE 11', function() {
+  it('should detect IE 11', function () {
     set('windows-ie-11');
     should(
       ua.isIE()
@@ -204,7 +204,7 @@ describe('ua query browser', function () {
     ).be.ok();
   });
 
-  it('should detect Edge', function() {
+  it('should detect Edge', function () {
     set('windows-edge-12');
     should(
       ua.isEdge()
@@ -225,7 +225,7 @@ describe('ua query browser', function () {
     ).be.not.ok();
   });
 
-  it('should detect standalone iOS', function() {
+  it('should detect standalone iOS', function () {
     set('standalone-ios');
     should(
       ua.isStandalone_iOS(10)
@@ -251,7 +251,7 @@ describe('ua query browser', function () {
     ).not.be.ok();
   });
 
-  it('should check for old browser version', function() {
+  it('should check for old browser version', function () {
     set('windows-xp-chrome-35');
 
     should(ua.isOld('chrome', 36)).be.ok();
