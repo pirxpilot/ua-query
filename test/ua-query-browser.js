@@ -6,7 +6,7 @@ global.self = {
   }
 };
 
-const ua = require('..');
+const ua = require('../lib/ua-query');
 const UA = require('./ua-strings.js');
 
 function set(ua) {

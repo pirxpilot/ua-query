@@ -18,7 +18,7 @@
     "request",
     "connect"
   ],
-  "dependencies": {},
+  "exports": "./lib/ua-query.js",
   "devDependencies": {
     "@biomejs/biome": "^1.9.4"
   },
@@ -26,7 +26,6 @@
     "test": "make check"
   },
   "files": [
-    "index.js",
     "lib"
   ]
 }
