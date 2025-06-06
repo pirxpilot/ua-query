@@ -1,5 +1,4 @@
 const { describe, it } = require('node:test');
-const should = require('should');
 
 global.self = {
   navigator: {
@@ -7,7 +6,7 @@ global.self = {
   }
 };
 
-const ua = require('..');
+const ua = require('../lib/ua-query');
 const UA = require('./ua-strings.js');
 
 function set(ua) {
@@ -15,252 +14,159 @@ function set(ua) {
   global.self.navigator.userAgent = UA[ua] || ua;
 }
 
-describe('ua query browser', function () {
-  it('should not detect Windows XP if user-agent is missing', function () {
+describe('ua query browser', () => {
+  it('should not detect Windows XP if user-agent is missing', t => {
     set('');
-    should(
-      ua.isWindowsXP()
-    ).not.be.ok();
+    t.assert.ok(!ua.isWindowsXP());
   });
 
-  it('should not detect Windows XP on Linux or MAC', function () {
+  it('should not detect Windows XP on Linux or MAC', t => {
     set('linux-firefox-41');
-    should(
-      ua.isWindowsXP()
-    ).not.be.ok();
+    t.assert.ok(!ua.isWindowsXP());
 
     set('safari-7');
-    should(
-      ua.isWindowsXP()
-    ).not.be.ok();
+    t.assert.ok(!ua.isWindowsXP());
   });
 
-  it('should detect Windows XP on Windows XP', function () {
+  it('should detect Windows XP on Windows XP', t => {
     set('windows-xp-chrome-35');
-    should(
-      ua.isWindowsXP()
-    ).be.ok();
+    t.assert.ok(ua.isWindowsXP());
   });
 
-  it('should not detect Chrome if user-agent is missing', function () {
+  it('should not detect Chrome if user-agent is missing', t => {
     set();
-    should(
-      ua.isChrome()
-    ).not.be.ok();
+    t.assert.ok(!ua.isChrome());
   });
 
-  it('should not detect Chrome if other browsers', function () {
+  it('should not detect Chrome if other browsers', t => {
     set('linux-firefox-41');
-    should(
-      ua.isChrome()
-    ).not.be.ok();
+    t.assert.ok(!ua.isChrome());
 
     set('windows-edge-12');
-    should(
-      ua.isChrome()
-    ).not.be.ok();
+    t.assert.ok(!ua.isChrome());
 
     set('windows-edge-79');
-    should(
-      ua.isChrome()
-    ).not.be.ok();
+    t.assert.ok(!ua.isChrome());
 
     set('safari-7');
-    should(
-      ua.isChrome()
-    ).not.be.ok();
+    t.assert.ok(!ua.isChrome());
 
     set('chrome ios');
-    should(
-      ua.isChrome()
-    ).not.be.ok();
+    t.assert.ok(!ua.isChrome());
   });
 
-  it('should detect Chrome', function () {
+  it('should detect Chrome', t => {
     set('windows-xp-chrome-35');
-    should(
-      ua.isChrome()
-    ).be.ok();
+    t.assert.ok(ua.isChrome());
     set('chromium');
-    should(
-      ua.isChrome()
-    ).be.ok();
+    t.assert.ok(ua.isChrome());
   });
 
-  it('ua should detect Chrome iOS', function () {
+  it('ua should detect Chrome iOS', t => {
     set('chrome ios');
-    should(
-      ua.isChrome_iOS()
-    ).be.ok();
+    t.assert.ok(ua.isChrome_iOS());
   });
 
-  it('should detect Firefox', function () {
+  it('should detect Firefox', t => {
     set('linux-firefox-41');
-    should(
-      ua.isFirefox()
-    ).be.ok();
+    t.assert.ok(ua.isFirefox());
   });
 
-  it('should detect Safari', function () {
+  it('should detect Safari', t => {
     set('safari-7');
 
-    should(
-      ua.isSafari()
-    ).be.ok();
-    should(
-      ua.isSafari(6)
-    ).be.ok();
-    should(
-      ua.isSafari(7)
-    ).be.ok();
-    should(
-      ua.isOld('safari', 8)
-    ).be.ok();
+    t.assert.ok(ua.isSafari());
+    t.assert.ok(ua.isSafari(6));
+    t.assert.ok(ua.isSafari(7));
+    t.assert.ok(ua.isOld('safari', 8));
 
     set('mobile-safari-10');
-    should(
-      ua.isSafari(10)
-    ).be.ok();
+    t.assert.ok(ua.isSafari(10));
   });
 
-  it('should not detect Safari if other browsers', function () {
+  it('should not detect Safari if other browsers', t => {
     set('mac-chrome-41');
-    should(
-      ua.isSafari()
-    ).not.be.ok();
+    t.assert.ok(!ua.isSafari());
     set('windows-xp-chrome-35');
-    should(
-      ua.isSafari()
-    ).not.be.ok();
+    t.assert.ok(!ua.isSafari());
     set('linux-firefox-41');
-    should(
-      ua.isSafari()
-    ).not.be.ok();
+    t.assert.ok(!ua.isSafari());
     set('windows-edge-12');
-    should(
-      ua.isSafari()
-    ).not.be.ok();
+    t.assert.ok(!ua.isSafari());
     set('windows-edge-79');
-    should(
-      ua.isSafari()
-    ).not.be.ok();
+    t.assert.ok(!ua.isSafari());
     set('standalone-ios');
-    should(
-      ua.isSafari()
-    ).not.be.ok();
+    t.assert.ok(!ua.isSafari());
   });
 
-  it('should not detect Firefox if Chrome', function () {
+  it('should not detect Firefox if Chrome', t => {
     set('windows-xp-chrome-35');
-    should(
-      ua.isFirefox()
-    ).not.be.ok();
+    t.assert.ok(!ua.isFirefox());
   });
 
-  it('should detect Chrome if requested version is the same', function () {
+  it('should detect Chrome if requested version is the same', t => {
     set('windows-xp-chrome-35');
-    should(
-      ua.isChrome(35)
-    ).be.ok();
+    t.assert.ok(ua.isChrome(35));
     set('chromium');
-    should(
-      ua.isChrome(38)
-    ).be.ok();
+    t.assert.ok(ua.isChrome(38));
   });
 
-  it('should not detect Chrome if requested version is above what we have', function () {
-    set(
-      'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36'
-    );
-    should(
-      ua.isChrome(36)
-    ).not.be.ok();
+  it('should not detect Chrome if requested version is above what we have', t => {
+    set('Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36');
+    t.assert.ok(!ua.isChrome(36));
   });
 
-  it('should detect IE <= 10', function () {
+  it('should detect IE <= 10', t => {
     set('windows-ie-9');
-    should(
-      ua.isIE()
-    ).be.ok();
+    t.assert.ok(ua.isIE());
     set('windows-ie-10');
-    should(
-      ua.isIE(10)
-    ).be.ok();
-    should(
-      ua.isIE(11)
-    ).be.not.ok();
+    t.assert.ok(ua.isIE(10));
+    t.assert.ok(!ua.isIE(11));
   });
 
-  it('should detect IE 11', function () {
+  it('should detect IE 11', t => {
     set('windows-ie-11');
-    should(
-      ua.isIE()
-    ).be.ok();
-    should(
-      ua.isIE(10)
-    ).be.ok();
-    should(
-      ua.isIE(11)
-    ).be.ok();
+    t.assert.ok(ua.isIE());
+    t.assert.ok(ua.isIE(10));
+    t.assert.ok(ua.isIE(11));
   });
 
-  it('should detect Edge', function () {
+  it('should detect Edge', t => {
     set('windows-edge-12');
-    should(
-      ua.isEdge()
-    ).be.ok();
-    should(
-      ua.isEdge(12)
-    ).be.ok();
+    t.assert.ok(ua.isEdge());
+    t.assert.ok(ua.isEdge(12));
     set('windows-edge-79');
-    should(
-      ua.isEdge()
-    ).be.ok();
-    should(
-      ua.isEdge(79)
-    ).be.ok();
+    t.assert.ok(ua.isEdge());
+    t.assert.ok(ua.isEdge(79));
     set('windows-ie-11');
-    should(
-      ua.isEdge()
-    ).be.not.ok();
+    t.assert.ok(!ua.isEdge());
   });
 
-  it('should detect standalone iOS', function () {
+  it('should detect standalone iOS', t => {
     set('standalone-ios');
-    should(
-      ua.isStandalone_iOS(10)
-    ).be.ok();
+    t.assert.ok(ua.isStandalone_iOS(10));
 
-    should(
-      ua.isStandalone_iOS(11)
-    ).not.be.ok();
+    t.assert.ok(!ua.isStandalone_iOS(11));
 
     set('standalone-ios-10.1');
-    should(
-      ua.isStandalone_iOS(10)
-    ).be.ok();
+    t.assert.ok(ua.isStandalone_iOS(10));
 
     set('mobile-safari-10');
-    should(
-      ua.isStandalone_iOS()
-    ).not.be.ok();
+    t.assert.ok(!ua.isStandalone_iOS());
 
     set('chrome ios');
-    should(
-      ua.isStandalone_iOS()
-    ).not.be.ok();
+    t.assert.ok(!ua.isStandalone_iOS());
   });
 
-  it('should check for old browser version', function () {
+  it('should check for old browser version', t => {
     set('windows-xp-chrome-35');
 
-    should(ua.isOld('chrome', 36)).be.ok();
-    should(ua.isOld('chrome', 35)).not.be.ok();
-    should(ua.isOld('chrome', 34)).not.be.ok();
+    t.assert.ok(ua.isOld('chrome', 36));
+    t.assert.ok(!ua.isOld('chrome', 35));
+    t.assert.ok(!ua.isOld('chrome', 34));
 
-    should(ua.isOld('safari', 36)).not.be.ok();
-    should(ua.isOld('ie', 36)).not.be.ok();
-    should(ua.isOld('firefox', 36)).not.be.ok();
+    t.assert.ok(!ua.isOld('safari', 36));
+    t.assert.ok(!ua.isOld('ie', 36));
+    t.assert.ok(!ua.isOld('firefox', 36));
   });
-
 });
